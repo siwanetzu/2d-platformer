@@ -8,6 +8,8 @@ extends CharacterBody2D
 
 var move_input : float
 
+@onready var sprite : Sprite2D = $Sprite
+
 func _ready() -> void:
 	pass
 
@@ -30,3 +32,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = -jump_force
 	
 	move_and_slide()
+	
+func _process(delta: float) -> void:
+	if velocity.x != 0:
+		sprite.flip_h = velocity.x < 0
