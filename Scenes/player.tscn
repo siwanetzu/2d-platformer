@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://db36bg67bitgi"]
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
