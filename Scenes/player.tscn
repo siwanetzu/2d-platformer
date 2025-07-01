@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://db36bg67bitgi"]
+[gd_scene load_steps=4 format=3 uid="uid://db36bg67bitgi"]
 
+[ext_resource type="Script" uid="uid://c3iuredy63mhe" path="res://player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://csl35s0t42r03" path="res://NightBorne Character/NightBorneSprite.png" id="1_v0iea"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvnsp"]
@@ -7,6 +8,7 @@ radius = 15.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
+script = ExtResource("1_cvnsp")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(2, 0)
@@ -19,7 +21,7 @@ shape = SubResource("CapsuleShape2D_cvnsp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -15)
-zoom = Vector2(4, 4)
+zoom = Vector2(6, 6)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
