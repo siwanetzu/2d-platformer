@@ -8,8 +8,8 @@ extends CharacterBody2D
 
 var move_input : float
 
-@onready var sprite : Sprite2D = $Sprite
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D
+@onready var _animated_sprite = $AnimatedSprite2D
 
 # storing the original offset of the collision shape
 var original_collision_offset : Vector2
@@ -37,8 +37,10 @@ func _physics_process(delta: float) -> void:
 	# movement
 	if move_input != 0:
 		velocity.x = lerp(velocity.x, move_input * move_speed, acceleration * delta)
+		_animated_sprite.play("run")
 	else:
 		velocity.x = lerp(velocity.x, 0.0, breaking * delta)
+		_animated_sprite.stop()
 	
 	# jumping
 	if Input.is_action_pressed("jump") and is_on_floor():
