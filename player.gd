@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 		_animated_sprite.play("run")
 	else:
 		velocity.x = lerp(velocity.x, 0.0, breaking * delta)
-		_animated_sprite.stop()
+		_animated_sprite.play("idle")
 	
 	# jumping
 	if Input.is_action_pressed("jump") and is_on_floor():
