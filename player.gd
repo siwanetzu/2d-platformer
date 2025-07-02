@@ -20,10 +20,14 @@ func _ready() -> void:
 	original_collision_offset = collision_shape.position
 	
 	# get the sprite width for calculating the flip offset
-	if sprite.texture:
-		sprite_width = sprite.texture.get_width()
+	if _animated_sprite.sprite_frames and _animated_sprite.sprite_frames.get_frame_count(_animated_sprite.animation) > 0:
+		var texture = _animated_sprite.sprite_frames.get_frame_texture(_animated_sprite.animation, 0)
+		if texture:
+			sprite_width = texture.get_width()
+		else:
+			sprite_width = 80  # Default fallback width if texture isn't loaded yet
 	else:
-		sprite_width = 80
+		sprite_width = 80  # Default fallback width if sprite frames aren't set up
 	
 
 func _physics_process(delta: float) -> void:
@@ -51,14 +55,5 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	if velocity.x != 0:
 		var is_flipped = velocity.x < 0
-		sprite.flip_h = is_flipped
+		_animated_sprite.flip_h = is_flipped
 		
-		# adjusting collision shape position based on sprite flip
-		if is_flipped:
-			# when flipped, moves the collision shape to the left side
-			# Calculating a position that accounts for the sprite's width and offset
-			var flip_offset = sprite_width * sprite.scale.x * 0.25
-			collision_shape.position.x = -original_collision_offset.x - flip_offset
-		else:
-			# When not flipped, use original offset
-			collision_shape.position.x = original_collision_offset.x

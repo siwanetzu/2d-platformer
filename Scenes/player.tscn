@@ -417,15 +417,15 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvnsp"]
-radius = 21.0
-height = 42.0
+radius = 14.0
+height = 28.0
+
+[sub_resource type="Animation" id="Animation_6t5aa"]
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_cvnsp"]
 resource_name = "idle"
 length = 0.5
-
-[sub_resource type="Animation" id="Animation_6t5aa"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vgqql"]
 _data = {
@@ -436,11 +436,6 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_cvnsp")
-move_speed = null
-acceleration = null
-breaking = null
-gravity = null
-jump_force = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -22)
@@ -448,7 +443,7 @@ sprite_frames = SubResource("SpriteFrames_lisdf")
 animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, -19)
+position = Vector2(0, -14)
 shape = SubResource("CapsuleShape2D_cvnsp")
 
 [node name="Camera2D" type="Camera2D" parent="."]

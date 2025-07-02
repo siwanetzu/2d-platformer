@@ -320,3 +320,8 @@ tile_map_data = PackedByteArray("AAABAAEAAAABAAEAAAACAAEAAAACAAEAAAADAAEAAAACAAE
 tile_set = SubResource("TileSet_6444e")
 
 [node name="Player" parent="." instance=ExtResource("3_xfk5q")]
+move_speed = 100.0
+acceleration = 50.0
+breaking = 20.0
+gravity = 500.0
+jump_force = 200.0
