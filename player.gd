@@ -9,9 +9,24 @@ extends CharacterBody2D
 var move_input : float
 
 @onready var sprite : Sprite2D = $Sprite
+@onready var collision_shape : CollisionShape2D = $CollisionShape2D
+
+# Store the original offset of the collision shape
+var original_collision_offset : Vector2
+var sprite_width : float
 
 func _ready() -> void:
-	pass
+	# Store the original collision shape position offset
+	original_collision_offset = collision_shape.position
+	
+	# Get the sprite width for calculating the flip offset
+	if sprite.texture:
+		sprite_width = sprite.texture.get_width()
+	else:
+		sprite_width = 80  # Default fallback width if texture isn't loaded yet
+	
+	# Make collision shape visible during runtime
+	collision_shape.debug_color = Color(0, 0.8, 0.8, 0.5)  # Cyan with transparency
 
 func _physics_process(delta: float) -> void:
 	# gravity
@@ -35,4 +50,15 @@ func _physics_process(delta: float) -> void:
 	
 func _process(delta: float) -> void:
 	if velocity.x != 0:
-		sprite.flip_h = velocity.x < 0
+		var is_flipped = velocity.x < 0
+		sprite.flip_h = is_flipped
+		
+		# Adjust collision shape position based on sprite flip
+		if is_flipped:
+			# When flipped, move the collision shape to the left side
+			# Calculate a position that accounts for the sprite's width and offset
+			var flip_offset = sprite_width * sprite.scale.x * 0.25  # Adjust this multiplier as needed
+			collision_shape.position.x = -original_collision_offset.x - flip_offset
+		else:
+			# When not flipped, use original offset
+			collision_shape.position.x = original_collision_offset.x
