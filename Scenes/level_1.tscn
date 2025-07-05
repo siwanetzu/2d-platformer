@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://cf02421cogh1x"]
+[gd_scene load_steps=9 format=4 uid="uid://cf02421cogh1x"]
 
 [ext_resource type="Texture2D" uid="uid://cjbcllaarhhea" path="res://Sprites/Backgrounds/backgroundForest.png" id="1_8ffim"]
 [ext_resource type="Texture2D" uid="uid://bgpypam3at683" path="res://Sprites/Tiles/tiles_packed.png" id="2_xfk5q"]
 [ext_resource type="PackedScene" uid="uid://db36bg67bitgi" path="res://Scenes/player.tscn" id="3_xfk5q"]
 [ext_resource type="PackedScene" uid="uid://dfxi3ekakermr" path="res://Scenes/enemy.tscn" id="4_7p6j4"]
 [ext_resource type="PackedScene" uid="uid://ce86p243vgdj7" path="res://Scenes/coin.tscn" id="5_6444e"]
+[ext_resource type="PackedScene" uid="uid://cos6trj74u3pm" path="res://Scenes/end_flag.tscn" id="6_evi0p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7p6j4"]
 texture = ExtResource("2_xfk5q")
@@ -364,3 +365,8 @@ collision_mask = 2
 [node name="Coin6" parent="Coins" instance=ExtResource("5_6444e")]
 position = Vector2(456, -10)
 collision_mask = 2
+
+[node name="EndFlag" parent="." instance=ExtResource("6_evi0p")]
+position = Vector2(580, -27)
+collision_mask = 2
+scene_to_load = ExtResource("3_xfk5q")
