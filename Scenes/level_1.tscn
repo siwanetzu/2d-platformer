@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://cf02421cogh1x"]
+[gd_scene load_steps=9 format=4 uid="uid://cf02421cogh1x"]
 
 [ext_resource type="Texture2D" uid="uid://cjbcllaarhhea" path="res://Sprites/Backgrounds/backgroundForest.png" id="1_8ffim"]
 [ext_resource type="Texture2D" uid="uid://bgpypam3at683" path="res://Sprites/Tiles/tiles_packed.png" id="2_xfk5q"]
 [ext_resource type="PackedScene" uid="uid://db36bg67bitgi" path="res://Scenes/player.tscn" id="3_xfk5q"]
+[ext_resource type="Texture2D" uid="uid://bkne2mi7j2qlo" path="res://Sprites/Characters/character_0024.png" id="4_7p6j4"]
+[ext_resource type="Script" uid="uid://sdygeaeapnru" path="res://enemy.gd" id="4_6444e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7p6j4"]
 texture = ExtResource("2_xfk5q")
@@ -307,8 +309,10 @@ tile_size = Vector2i(18, 18)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_7p6j4")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_evi0p"]
+radius = 7.0
+
 [node name="Main" type="Node2D"]
-position = Vector2(3, 1)
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(404, -143)
@@ -320,8 +324,16 @@ tile_map_data = PackedByteArray("AAABAAEAAAABAAEAAAACAAEAAAACAAEAAAADAAEAAAACAAE
 tile_set = SubResource("TileSet_6444e")
 
 [node name="Player" parent="." instance=ExtResource("3_xfk5q")]
-move_speed = 100.0
-acceleration = 50.0
-breaking = 20.0
-gravity = 500.0
-jump_force = 200.0
+
+[node name="Enemy" type="Area2D" parent="."]
+position = Vector2(109, 41)
+script = ExtResource("4_6444e")
+move_direction = Vector2(0, -50)
+
+[node name="Sprite" type="Sprite2D" parent="Enemy"]
+texture = ExtResource("4_7p6j4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+shape = SubResource("CircleShape2D_evi0p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy"]
