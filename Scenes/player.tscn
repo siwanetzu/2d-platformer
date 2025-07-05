@@ -1,7 +1,8 @@
-[gd_scene load_steps=60 format=3 uid="uid://db36bg67bitgi"]
+[gd_scene load_steps=62 format=3 uid="uid://db36bg67bitgi"]
 
 [ext_resource type="Script" uid="uid://c3iuredy63mhe" path="res://player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://qfv58kcqdxi2" path="res://NightBorne Character/NightBorne.png" id="2_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://ci7np6pu0bj46" path="res://Sprites/Objects/tile_0044.png" id="3_6t5aa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
 atlas = ExtResource("2_6t5aa")
@@ -420,6 +421,11 @@ animations = [{
 radius = 14.0
 height = 28.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_6t5aa"]
+font_size = 38
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_cvnsp")
@@ -437,3 +443,35 @@ shape = SubResource("CapsuleShape2D_cvnsp")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -15)
 zoom = Vector2(6, 6)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthContainer" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 323.0
+offset_bottom = 90.0
+
+[node name="Heart" type="TextureRect" parent="CanvasLayer/HealthContainer"]
+layout_mode = 2
+texture = ExtResource("3_6t5aa")
+expand_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="CanvasLayer/HealthContainer"]
+layout_mode = 2
+texture = ExtResource("3_6t5aa")
+expand_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="CanvasLayer/HealthContainer"]
+layout_mode = 2
+texture = ExtResource("3_6t5aa")
+expand_mode = 2
+
+[node name="ScoreText" type="Label" parent="CanvasLayer"]
+offset_left = 10.0
+offset_top = 100.0
+offset_right = 199.0
+offset_bottom = 158.0
+theme_override_font_sizes/font_size = 38
+text = "Score: 500"
+label_settings = SubResource("LabelSettings_6t5aa")

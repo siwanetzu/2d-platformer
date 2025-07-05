@@ -21,6 +21,35 @@ func _ready() -> void:
 	# storing the original collision shape position offset
 	original_collision_offset = collision_shape.position
 	
+	# Check for the CanvasLayer
+	if has_node("CanvasLayer"):
+		var canvas_layer = get_node("CanvasLayer") as CanvasLayer
+		print("CanvasLayer found in Player node")
+		print("CanvasLayer layer:", canvas_layer.layer)
+		print("CanvasLayer visible:", canvas_layer.visible)
+		
+		if canvas_layer.has_node("HealthContainer"):
+			var health_container = canvas_layer.get_node("HealthContainer")
+			print("HealthContainer position:", health_container.position)
+			print("HealthContainer offset_left:", health_container.offset_left)
+			print("HealthContainer offset_top:", health_container.offset_top)
+			print("HealthContainer offset_right:", health_container.offset_right)
+			print("HealthContainer offset_bottom:", health_container.offset_bottom)
+		else:
+			print("HealthContainer not found in CanvasLayer")
+			
+		if canvas_layer.has_node("ScoreText"):
+			var score_text = canvas_layer.get_node("ScoreText")
+			print("ScoreText position:", score_text.position)
+			print("ScoreText offset_left:", score_text.offset_left)
+			print("ScoreText offset_top:", score_text.offset_top)
+			print("ScoreText offset_right:", score_text.offset_right)
+			print("ScoreText offset_bottom:", score_text.offset_bottom)
+		else:
+			print("ScoreText not found in CanvasLayer")
+	else:
+		print("CanvasLayer not found in Player node")
+
 	# get the sprite width for calculating the flip offset
 	if _animated_sprite.sprite_frames and _animated_sprite.sprite_frames.get_frame_count(_animated_sprite.animation) > 0:
 		var texture = _animated_sprite.sprite_frames.get_frame_texture(_animated_sprite.animation, 0)
@@ -55,6 +84,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func _process(delta: float) -> void:
+	# Check for the CanvasLayer visibility every frame
+	if has_node("CanvasLayer"):
+		var canvas_layer = get_node("CanvasLayer") as CanvasLayer
+		print("CanvasLayer visible:", canvas_layer.visible)
+	
 	if velocity.x != 0:
 		var is_flipped = velocity.x < 0
 		_animated_sprite.flip_h = is_flipped
