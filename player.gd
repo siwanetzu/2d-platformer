@@ -101,6 +101,7 @@ func _process(delta: float) -> void:
 func take_damage (amount: int):
 	health -= amount
 	OnUpdateHealth.emit(health)
+	_damage_flash()
 	
 	if health <= 0:
 		call_deferred("game_over")
@@ -112,3 +113,8 @@ func game_over ():
 func increase_score (amount : int):
 	PlayerStats.score += amount
 	OnUpdateScore.emit(PlayerStats.score)
+	
+func _damage_flash ():
+	_animated_sprite.modulate = Color.RED
+	await get_tree().create_timer(0.1).timeout
+	_animated_sprite.modulate = Color.WHITE
