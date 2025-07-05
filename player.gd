@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var gravity : float = 500.0
 @export var jump_force : float = 200.0
 
+@export var health : int = 3
+
 var move_input : float
 
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D
@@ -57,3 +59,12 @@ func _process(delta: float) -> void:
 		var is_flipped = velocity.x < 0
 		_animated_sprite.flip_h = is_flipped
 		
+
+func take_damage (amount: int):
+	health -= amount
+	
+	if health <= 0:
+		game_over()
+
+func game_over ():
+	get_tree().change_scene_to_file("res://Scenes/level_1.tscn")

@@ -312,7 +312,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_7p6j4")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_evi0p"]
-radius = 25.0
+radius = 7.28011
 
 [sub_resource type="Animation" id="Animation_wrinw"]
 resource_name = "fly"
