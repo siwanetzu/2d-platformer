@@ -14,5 +14,5 @@ func _physics_process(delta: float) -> void:
 	sprite.scale.x = sin(time * rotate_speed)
 	
 	# bob up and down
-	var y_pos = sin(time * bob_speed) * bob_height
+	var y_pos = ((1 + sin(time * bob_speed)) /2) * bob_height
 	global_position.y = start_pos.y - y_pos
