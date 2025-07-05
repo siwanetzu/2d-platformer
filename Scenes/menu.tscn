@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=3 uid="uid://wuxjqlm4npkx"]
+
+[ext_resource type="Texture2D" uid="uid://cjbcllaarhhea" path="res://Sprites/Backgrounds/backgroundForest.png" id="1_1rerr"]
+[ext_resource type="Script" uid="uid://b362ojw8on7ab" path="res://menu.gd" id="1_xhh6f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1rerr"]
+font_size = 70
+font_color = Color(0.889667, 0.558123, 0.132548, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.835294)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xhh6f")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = -199.0
+offset_right = 2400.0
+offset_bottom = 2201.0
+texture = ExtResource("1_1rerr")
+expand_mode = 4
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -954.0
+offset_top = -810.0
+offset_right = 954.0
+offset_bottom = -601.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Zenva 2D Platformer Game"
+label_settings = SubResource("LabelSettings_1rerr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -176.0
+offset_right = 160.0
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -28.0
+offset_right = 160.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

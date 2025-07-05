@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://ciqvo7vxreo38"]
+[gd_scene load_steps=11 format=4 uid="uid://ciqvo7vxreo38"]
 
 [ext_resource type="Script" uid="uid://bmjnvxgslyr5x" path="res://background_parallax.gd" id="1_055b2"]
 [ext_resource type="Texture2D" uid="uid://bv4uo8bvn4moj" path="res://Sprites/Backgrounds/backgroundDesert.png" id="2_055b2"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dfxi3ekakermr" path="res://Scenes/enemy.tscn" id="5_t7v2y"]
 [ext_resource type="PackedScene" uid="uid://ce86p243vgdj7" path="res://Scenes/coin.tscn" id="6_ait6c"]
 [ext_resource type="PackedScene" uid="uid://cos6trj74u3pm" path="res://Scenes/end_flag.tscn" id="7_vcilj"]
+[ext_resource type="PackedScene" uid="uid://wuxjqlm4npkx" path="res://Scenes/menu.tscn" id="8_2mgoq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7p6j4"]
 texture = ExtResource("3_uhnj4")
@@ -398,4 +399,4 @@ collision_mask = 2
 [node name="EndFlag" parent="." instance=ExtResource("7_vcilj")]
 position = Vector2(637, -27)
 collision_mask = 2
-scene_to_load = ExtResource("4_42uki")
+scene_to_load = ExtResource("8_2mgoq")
