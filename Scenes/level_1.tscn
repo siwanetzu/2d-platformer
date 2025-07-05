@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://cf02421cogh1x"]
+[gd_scene load_steps=8 format=4 uid="uid://cf02421cogh1x"]
 
 [ext_resource type="Texture2D" uid="uid://cjbcllaarhhea" path="res://Sprites/Backgrounds/backgroundForest.png" id="1_8ffim"]
 [ext_resource type="Texture2D" uid="uid://bgpypam3at683" path="res://Sprites/Tiles/tiles_packed.png" id="2_xfk5q"]
 [ext_resource type="PackedScene" uid="uid://db36bg67bitgi" path="res://Scenes/player.tscn" id="3_xfk5q"]
 [ext_resource type="PackedScene" uid="uid://dfxi3ekakermr" path="res://Scenes/enemy.tscn" id="4_7p6j4"]
-[ext_resource type="Texture2D" uid="uid://dhk3du4f6fkor" path="res://Sprites/Objects/tile_0151.png" id="5_6444e"]
-[ext_resource type="Script" uid="uid://diwpl2ylcfxg5" path="res://coin.gd" id="5_evi0p"]
+[ext_resource type="PackedScene" uid="uid://ce86p243vgdj7" path="res://Scenes/coin.tscn" id="5_6444e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7p6j4"]
 texture = ExtResource("2_xfk5q")
@@ -310,9 +309,6 @@ tile_size = Vector2i(18, 18)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_7p6j4")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_evi0p"]
-radius = 6.0
-
 [node name="Main" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -326,29 +322,45 @@ tile_set = SubResource("TileSet_6444e")
 
 [node name="Player" parent="." instance=ExtResource("3_xfk5q")]
 
-[node name="Enemy" parent="." instance=ExtResource("4_7p6j4")]
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("4_7p6j4")]
 position = Vector2(109, 41)
 
-[node name="Enemy2" parent="." instance=ExtResource("4_7p6j4")]
+[node name="Enemy2" parent="Enemies" instance=ExtResource("4_7p6j4")]
 position = Vector2(216, 53)
 move_speed = 55.0
 
-[node name="Enemy3" parent="." instance=ExtResource("4_7p6j4")]
+[node name="Enemy3" parent="Enemies" instance=ExtResource("4_7p6j4")]
 position = Vector2(282, 60)
 
-[node name="Enemy4" parent="." instance=ExtResource("4_7p6j4")]
+[node name="Enemy4" parent="Enemies" instance=ExtResource("4_7p6j4")]
 position = Vector2(345, 65)
 move_direction = Vector2(0, -80)
 move_speed = 35.0
 
-[node name="Coin" type="Area2D" parent="."]
+[node name="Coins" type="Node" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource("5_6444e")]
 position = Vector2(61, 9)
-script = ExtResource("5_evi0p")
+collision_mask = 2
 
-[node name="Sprite" type="Sprite2D" parent="Coin"]
-texture = ExtResource("5_6444e")
+[node name="Coin2" parent="Coins" instance=ExtResource("5_6444e")]
+position = Vector2(182, 9)
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin"]
-shape = SubResource("CircleShape2D_evi0p")
+[node name="Coin3" parent="Coins" instance=ExtResource("5_6444e")]
+position = Vector2(243, 27)
+collision_mask = 2
 
-[connection signal="body_entered" from="Coin" to="Coin" method="_on_body_entered"]
+[node name="Coin4" parent="Coins" instance=ExtResource("5_6444e")]
+position = Vector2(316, 27)
+collision_mask = 2
+
+[node name="Coin5" parent="Coins" instance=ExtResource("5_6444e")]
+position = Vector2(369, 7)
+collision_mask = 2
+
+[node name="Coin6" parent="Coins" instance=ExtResource("5_6444e")]
+position = Vector2(456, -10)
+collision_mask = 2
