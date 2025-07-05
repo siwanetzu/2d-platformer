@@ -15,3 +15,7 @@ func _physics_process(delta: float) -> void:
 			target_pos = start_pos
 			
 	
+
+
+func _on_body_entered(body: Node2D) -> void:
+	
