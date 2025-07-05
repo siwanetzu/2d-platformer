@@ -97,6 +97,9 @@ func _process(delta: float) -> void:
 		var is_flipped = velocity.x < 0
 		_animated_sprite.flip_h = is_flipped
 		
+	if global_position.y > 200:
+		game_over()
+		
 
 func take_damage (amount: int):
 	health -= amount
