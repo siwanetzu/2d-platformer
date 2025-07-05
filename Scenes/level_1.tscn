@@ -350,3 +350,5 @@ texture = ExtResource("5_6444e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coin"]
 shape = SubResource("CircleShape2D_evi0p")
+
+[connection signal="body_entered" from="Coin" to="Coin" method="_on_body_entered"]
