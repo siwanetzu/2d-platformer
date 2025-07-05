@@ -1,5 +1,6 @@
 extends Area2D
 
+
 @export var move_direction : Vector2 
 @export var move_speed : float = 20
 
@@ -14,14 +15,8 @@ func _physics_process(delta: float) -> void:
 		else:
 			target_pos = start_pos
 			
-	
 
+func _on_body_entered(body):
 
-
-
-
-func _on_body_entered(body: Node2D) -> void:
-	if not body.is_in_group("Player"):
-		return
-	
-	print("Deal damage")
+	if body.is_in_group("Player"):
+		print("Deal damage")
