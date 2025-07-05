@@ -16,6 +16,10 @@ var move_input : float
 
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D
 @onready var _animated_sprite = $AnimatedSprite2D
+@onready var audio : AudioStreamPlayer = $AudioStreamPlayer
+
+var take_damage_sfx : AudioStream = preload("res://Audio/take_damage.wav")
+var coin_sfx : AudioStream = preload("res://Audio/coin.wav")
 
 # storing the original offset of the collision shape
 var original_collision_offset : Vector2
@@ -105,6 +109,7 @@ func take_damage (amount: int):
 	health -= amount
 	OnUpdateHealth.emit(health)
 	_damage_flash()
+	play_sound(take_damage_sfx)
 	
 	if health <= 0:
 		call_deferred("game_over")
@@ -116,8 +121,14 @@ func game_over ():
 func increase_score (amount : int):
 	PlayerStats.score += amount
 	OnUpdateScore.emit(PlayerStats.score)
+	play_sound(coin_sfx)
+
 	
 func _damage_flash ():
 	_animated_sprite.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
 	_animated_sprite.modulate = Color.WHITE
+
+func play_sound (sound: AudioStream):
+	audio.stream = sound
+	audio.play()

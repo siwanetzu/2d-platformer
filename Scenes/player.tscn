@@ -479,3 +479,5 @@ offset_bottom = 158.0
 theme_override_font_sizes/font_size = 38
 text = "Score: 500"
 label_settings = SubResource("LabelSettings_6t5aa")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
