@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://cf02421cogh1x"]
+[gd_scene load_steps=10 format=4 uid="uid://cf02421cogh1x"]
 
 [ext_resource type="Texture2D" uid="uid://cjbcllaarhhea" path="res://Sprites/Backgrounds/backgroundForest.png" id="1_8ffim"]
+[ext_resource type="Script" uid="uid://bmjnvxgslyr5x" path="res://background_parallax.gd" id="1_lsmp6"]
 [ext_resource type="Texture2D" uid="uid://bgpypam3at683" path="res://Sprites/Tiles/tiles_packed.png" id="2_xfk5q"]
 [ext_resource type="PackedScene" uid="uid://db36bg67bitgi" path="res://Scenes/player.tscn" id="3_xfk5q"]
 [ext_resource type="PackedScene" uid="uid://dfxi3ekakermr" path="res://Scenes/enemy.tscn" id="4_7p6j4"]
@@ -312,9 +313,26 @@ sources/0 = SubResource("TileSetAtlasSource_7p6j4")
 
 [node name="Main" type="Node2D"]
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(404, -143)
-scale = Vector2(1.7207, 1.48879)
+[node name="Background" type="Node2D" parent="."]
+script = ExtResource("1_lsmp6")
+
+[node name="Background" type="Sprite2D" parent="Background"]
+scale = Vector2(0.5, 0.433)
+texture = ExtResource("1_8ffim")
+
+[node name="Background4" type="Sprite2D" parent="Background"]
+position = Vector2(-512, 0)
+scale = Vector2(0.5, 0.433)
+texture = ExtResource("1_8ffim")
+
+[node name="Background2" type="Sprite2D" parent="Background"]
+position = Vector2(512, 0)
+scale = Vector2(0.5, 0.433)
+texture = ExtResource("1_8ffim")
+
+[node name="Background3" type="Sprite2D" parent="Background"]
+position = Vector2(1024, 0)
+scale = Vector2(0.5, 0.433)
 texture = ExtResource("1_8ffim")
 
 [node name="Layout" type="TileMapLayer" parent="."]
