@@ -337,3 +337,5 @@ texture = ExtResource("4_7p6j4")
 shape = SubResource("CircleShape2D_evi0p")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy"]
+
+[connection signal="body_entered" from="Enemy" to="Enemy" method="_on_body_entered"]
