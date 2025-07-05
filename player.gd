@@ -64,7 +64,7 @@ func take_damage (amount: int):
 	health -= amount
 	
 	if health <= 0:
-		game_over()
+		call_deferred("game_over")
 
 func game_over ():
 	get_tree().change_scene_to_file("res://Scenes/level_1.tscn")

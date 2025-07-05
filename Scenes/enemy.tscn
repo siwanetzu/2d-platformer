@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://dfxi3ekakermr"]
+
+[ext_resource type="Script" uid="uid://sdygeaeapnru" path="res://enemy.gd" id="1_0h1x2"]
+[ext_resource type="Texture2D" uid="uid://bkne2mi7j2qlo" path="res://Sprites/Characters/character_0024.png" id="2_dwvs7"]
+[ext_resource type="Texture2D" uid="uid://crvaf8uje2vw1" path="res://Sprites/Characters/character_0025.png" id="3_txv1s"]
+[ext_resource type="Texture2D" uid="uid://1ackqr85lxrj" path="res://Sprites/Characters/character_0026.png" id="4_ev7ek"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_evi0p"]
+radius = 7.28011
+
+[sub_resource type="Animation" id="Animation_wrinw"]
+resource_name = "fly"
+length = 0.45
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_dwvs7"), ExtResource("3_txv1s"), ExtResource("4_ev7ek")]
+}
+
+[sub_resource type="Animation" id="Animation_chwpn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_dwvs7")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_af3po"]
+_data = {
+&"RESET": SubResource("Animation_chwpn"),
+&"fly": SubResource("Animation_wrinw")
+}
+
+[node name="Enemy" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_0h1x2")
+move_direction = Vector2(0, -50)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_dwvs7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_evi0p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_af3po")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
