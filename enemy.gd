@@ -13,3 +13,5 @@ func _physics_process(delta: float) -> void:
 			target_pos = start_pos + move_direction
 		else:
 			target_pos = start_pos
+			
+	
