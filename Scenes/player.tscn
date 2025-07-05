@@ -1,8 +1,9 @@
-[gd_scene load_steps=62 format=3 uid="uid://db36bg67bitgi"]
+[gd_scene load_steps=63 format=3 uid="uid://db36bg67bitgi"]
 
 [ext_resource type="Script" uid="uid://c3iuredy63mhe" path="res://player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://qfv58kcqdxi2" path="res://NightBorne Character/NightBorne.png" id="2_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://ci7np6pu0bj46" path="res://Sprites/Objects/tile_0044.png" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://crdb730cnncia" path="res://player_ui.gd" id="3_vgqql"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
 atlas = ExtResource("2_6t5aa")
@@ -423,7 +424,7 @@ height = 28.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_6t5aa"]
 font_size = 38
-shadow_size = 3
+shadow_size = 6
 shadow_color = Color(0, 0, 0, 1)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
@@ -445,6 +446,7 @@ position = Vector2(0, -15)
 zoom = Vector2(6, 6)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("3_vgqql")
 
 [node name="HealthContainer" type="HBoxContainer" parent="CanvasLayer"]
 offset_left = 10.0
