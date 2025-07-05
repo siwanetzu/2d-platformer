@@ -17,6 +17,7 @@ func _physics_process(delta: float) -> void:
 			
 
 func _on_body_entered(body):
+	if not body.is_in_group("Player"):
+		return
 
-	if body.is_in_group("Player"):
-		print("Deal damage")
+	print("Deal Damage")
